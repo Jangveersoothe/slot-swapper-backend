@@ -6,8 +6,8 @@ module.exports = function (req, res, next) {
   if (!token) return res.status(401).json({ error: "No token" });
 
   try {
-    const data = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = data;
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = { userId: decoded.id }; // <-- match what your routes expect
     next();
   } catch (err) {
     return res.status(401).json({ error: "Invalid token" });
