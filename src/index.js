@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const sequelize = require("./db");
 const User = require("./models/User");
+const SwapRequest = require("./models/SwapRequest");
 
 app.use(express.json());
 
