@@ -5,6 +5,12 @@ const User = require("./models/User");
 
 app.use(express.json());
 
+const authRoutes = require("./routes/auth");
+app.use("/api/auth", authRoutes);
+
+const slotRoutes = require("./routes/slot");
+app.use("/api/slot", slotRoutes);
+
 app.get("/", (req, res) => {
   res.send("SlotSwapper backend running");
 });
